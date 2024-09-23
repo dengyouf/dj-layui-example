@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock%}</title>
+  {% load static %}
+  <link href="{%  static 'plugins/layui/css/layui.css' %}" rel="stylesheet">
+  <script src="{% static 'js/echarts.min.js'%}"></script>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header layui-bg-blue">
+    <div class="layui-logo layui-hide-xs  layui-font-black layui-font-28">DJANGO</div>
+    <!-- 头部区域（可配合layui 已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left layui-bg-blue">
+
+    </ul>
+    <ul class="layui-nav layui-layout-right ">
+      <li class="layui-nav-item layui-hide layui-show-sm-inline-block">
+        <a href="javascript:;">
+          <img src="//unpkg.com/outeres@0.0.10/img/layui/icon-v2.png" class="layui-nav-img">
+          tester
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="javascript:;">Your Profile</a></dd>
+          <dd><a href="javascript:;">Settings</a></dd>
+          <dd><a href="javascript:;">Sign out</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+        <a href="javascript:;">
+          <i class="layui-icon layui-icon-more-vertical"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree" lay-filter="test">
+        <li class="layui-nav-item {% block nav-item-0 %} {% endblock %}">
+          <a class="" href="javascript:;"><i class="layui-icon layui-icon-app"></i> &nbsp;布局</a>
+          <dl class="layui-nav-child">
+            <dd class="{% block nav-this-0 %} {% endblock %}"><a href="{% url 'grid' %}"><i class="layui-icon layui-icon-app"></i> &nbsp;栅格</a></dd>
+            <dd class="{% block nav-this-1 %} {% endblock %}"><a href="{% url 'charts' %}"><i class="layui-icon layui-icon-template"></i> &nbsp;图表</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    {% block body %}{% endblock %}
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    底部固定区域
+  </div>
+</div>
+
+<script src="{%  static 'plugins/layui/layui.js' %}"></script>
+{% block js %} {% endblock %}
+</body>
+</html>
